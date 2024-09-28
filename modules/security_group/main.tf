@@ -3,7 +3,7 @@ data "aws_vpc" "default" {
 }
 
 resource "aws_security_group" "allow_port" {
-  name        = "allow-specified-port"
+  name        = "cloud_native_monitoring_app"
   description = "Security group to allow traffic on a specified port"
   vpc_id      = data.aws_vpc.default.id
 
@@ -23,6 +23,6 @@ resource "aws_security_group" "allow_port" {
   }
 
   tags = {
-    Name = "allow-specified-port-sg"
+    Name = "sg-cloud_native_monitoring_app"
   }
 }
