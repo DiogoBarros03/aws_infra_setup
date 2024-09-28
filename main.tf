@@ -1,7 +1,7 @@
 module "iam_user_and_role" {
-  source = "./iam.tf"
+  source = "./modules/iam_user_and_role"
 }
 
 module "security_group"{
-    source= "./security_group.tf"
+  source = "./modules/security_group"
 }
