@@ -1,12 +1,6 @@
 name: Setup Infrastructure
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
   terraform-init-plan:
@@ -44,8 +38,10 @@ jobs:
           cat plan.txt >> comment.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   terraform-environment-apply:
     needs: terraform-init-plan
+    if: github.ref == 'refs/heads/master' && (github.event_name == 'push' || github.event_name == 'pull_request')
     name: Terraform Apply
     runs-on: ubuntu-latest
 
