@@ -71,4 +71,4 @@ jobs:
         run: terraform init
 
       - name: Terraform Apply with Environment
-        run: terraform apply 
+        run: terraform apply -auto-approve
