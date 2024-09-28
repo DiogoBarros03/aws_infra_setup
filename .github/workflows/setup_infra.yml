@@ -7,6 +7,8 @@ jobs:
     name: Terraform Init and Plan
     runs-on: ubuntu-latest
 
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.base_ref == 'master')
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
