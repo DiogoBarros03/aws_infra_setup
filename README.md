@@ -23,7 +23,7 @@ This repository contains the Terraform configuration for provisioning AWS resour
 
 This project works alongside the Kubernetes repository where the Python application is deployed using the infrastructure provisioned here.
 
-See the related repository: [Kubernetes Python App](<https://github.com/DiogoBarros03/cloud-native-monotoring-app>)
+See the related repository: [AWS Cloud Native App](<https://github.com/DiogoBarros03/cloud-native-monotoring-app>)
 
 ## How to Use
 
