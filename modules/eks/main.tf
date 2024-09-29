@@ -30,7 +30,7 @@ resource "aws_eks_cluster" "app_eks_cluster" {
 resource "aws_eks_node_group" "eks_node_group" {
   cluster_name    = aws_eks_cluster.app_eks_cluster.name
   node_group_name = "nodes-groups"
-  node_role_arn   = module.iam_user_and_role.eks_worker_role_arn 
+  node_role_arn   = var.worker_role_arn 
 
   subnet_ids = data.aws_subnets.default_subnets.ids
 

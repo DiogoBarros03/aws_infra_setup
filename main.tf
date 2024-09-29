@@ -20,5 +20,6 @@ module "ecr"{
 
 module "eks"{
   source = "./modules/eks"
+  worker_role_arn = module.iam_user_and_role.eks_worker_role_arn 
 }
 
