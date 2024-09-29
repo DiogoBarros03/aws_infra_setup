@@ -33,7 +33,15 @@ resource "aws_eks_addon" "vpc_cni" {
 
   resolve_conflicts_on_create = "OVERWRITE"
   resolve_conflicts_on_update = "PRESERVE"
+
+  configuration_values = jsonencode({
+    env = {
+      ENABLE_PREFIX_DELEGATION = "false" 
+      WARM_PREFIX_TARGET       = "0"     
+    }
+  })
 }
+
 
 resource "aws_eks_addon" "coredns" {
   cluster_name = aws_eks_cluster.app_eks_cluster.name
