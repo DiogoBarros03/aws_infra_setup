@@ -27,6 +27,21 @@ resource "aws_eks_cluster" "app_eks_cluster" {
   }
 }
 
+resource "aws_eks_node_group" "eks_node_group" {
+  cluster_name    = aws_eks_cluster.app_eks_cluster.name
+  node_group_name = "nodes-groups"
+  node_role_arn   = module.iam_user_and_role.eks_worker_role_arn 
+
+  subnet_ids = data.aws_subnets.default_subnets.ids
+
+  scaling_config {
+    desired_size = 2
+    max_size     = 2
+    min_size     = 2
+  }
+
+  instance_types = ["t2.micro"]
+}
 resource "aws_eks_addon" "vpc_cni" {
   cluster_name = aws_eks_cluster.app_eks_cluster.name
   addon_name   = "vpc-cni"
