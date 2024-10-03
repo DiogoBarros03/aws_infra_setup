@@ -25,10 +25,12 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        working-directory:  ./monitoring_app
 
       - name: Terraform Plan
         id: plan
         run: terraform plan -out=tfplan
+        working-directory:  ./monitoring_app
 
       - name: Post Plan Result
         if: github.event_name == 'pull_request'
@@ -65,6 +67,8 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        working-directory:  ./monitoring_app
 
       - name: Terraform Apply with Environment
         run: terraform apply -auto-approve
+        working-directory:  ./monitoring_app
