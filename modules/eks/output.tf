@@ -3,5 +3,5 @@ output "endpoint" {
 }
 
 output "kubeconfig-certificate-authority-data" {
-  value = aws_eks_cluster.app_eks_cluster.certificate_authority[0].data
+  value = length(aws_eks_cluster.app_eks_cluster.certificate_authority) > 0 ? aws_eks_cluster.app_eks_cluster.certificate_authority[0].data : ""
 }

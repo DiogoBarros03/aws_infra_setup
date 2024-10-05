@@ -1,19 +1,19 @@
 output "security_group_id" {
-  description = "ID do Security Group"
-  value       = aws_security_group.allow_port.id
+  value = length(aws_security_group.allow_port) > 0 ? aws_security_group.allow_port[0].id : ""
 }
 
 output "security_group_name" {
-  description = "Nome do Security Group"
-  value       = aws_security_group.allow_port.name
+  value = length(aws_security_group.allow_port) > 0 ? aws_security_group.allow_port[0].name : ""
 }
 
 output "security_group_vpc_id" {
-  description = "ID da VPC associada ao Security Group (VPC padrão)"
-  value       = aws_security_group.allow_port.vpc_id
+  value = length(aws_security_group.allow_port) > 0 ? aws_security_group.allow_port[0].vpc_id : ""
 }
 
 output "security_group_arn" {
-  description = "ARN do Security Group"
-  value       = aws_security_group.allow_port.arn
+  value = length(aws_security_group.allow_port) > 0 ? aws_security_group.allow_port[0].arn : ""
+}
+
+output "board_game_sg_id" {
+  value = length(aws_security_group.board_game_sg) > 0 ? aws_security_group.board_game_sg[0].id : ""
 }

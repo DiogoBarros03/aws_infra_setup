@@ -4,6 +4,7 @@ data "aws_vpc" "default" {
 
 resource "aws_security_group" "allow_port" {
   name        = "cloud_native_monitoring_app"
+  count       = var.create_cloud_native_monitoring_sg ? 1 : 0
   description = "Security group to allow traffic on a specified port"
   vpc_id      = data.aws_vpc.default.id
 
